@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;400;600&display=swap');
 
-.login{
-    background-color: #212121;
+ion-content{
+    --background: #212121;
     height: 100%;
     width: 100%;
     display: flex;
@@ -42,22 +42,23 @@
     flex-direction: column;
     justify-content: center;
     padding: 0px 50px 0px 50px;
+    font-family: 'Work Sans', sans-serif;
 }
 
-.inputs > input{
+.inputs > ion-item{
     font-family: 'Work Sans', sans-serif;
     width: 100%;
     margin-bottom: 10px;
     font-size: 15px;
     padding: 15px;
-    background: #434343;
-    border-radius: 25px;
-    color: rgb(166, 166, 166);
+    --background: #434343;
+    --border-radius: 15px;
+    --color: rgb(166, 166, 166);
     transition: 0.8s;
     border: hidden;
 }
 
-.inputs > h3{
+.inputs > ion-label{
     color: rgb(219, 219, 219);
 
 }
@@ -69,12 +70,12 @@
     text-align: center;
 }
 
-.buttons  > button{
+.buttons  > ion-button{
     width: 50%;
     height: 50px;
-    border-radius: 30px;
-    background-color: #255FF5;
-    color: rgb(219, 219, 219);
+    --border-radius: 30px;
+    --background: #255FF5;
+    --color: rgb(219, 219, 219);
     border: none;
     font-family: 'Work Sans', sans-serif;
     font-size: 15px;

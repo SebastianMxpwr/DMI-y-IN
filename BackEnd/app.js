@@ -7,6 +7,7 @@ const body_parser = require('body-parser');
 const path = require('path')
 
 const user_routes = require('./routes/User_routes')
+const store_routes = require('./routes/Store_routes')
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(bodyParserJson)
 
 app.use('/uploads', express.static(path.resolve('uploads')));
 app.use('/api', user_routes);
+app.use('/api', store_routes);
 
 
 mongoose.connect(process.env.URLBD,{

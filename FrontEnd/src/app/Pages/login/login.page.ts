@@ -8,7 +8,7 @@ import { UserService } from '../../Services/user.service'
 })
 export class LoginPage implements OnInit {
 
-  user={
+  user={ 
     email: '',
     password: ''
   }
@@ -18,9 +18,14 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  login(email, password){
-    console.log(email.value, password.value);
-    
+  login(){
+    this.userS.login(this.user).subscribe(user => {
+      console.log(user);
+      
+    },err=>{
+      console.log(err);
+      
+    })
     }
   }
 

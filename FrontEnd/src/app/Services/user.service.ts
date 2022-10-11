@@ -10,6 +10,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(data) {
-    return this.http.post(`${this.url}/login_empleado`, data)
+    return this.http.post(`${this.url}/login`, data)
   }
 }

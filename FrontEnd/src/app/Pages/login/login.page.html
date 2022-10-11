@@ -1,4 +1,4 @@
-<div class="login">
+<ion-content>
   <div class="img">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -131,32 +131,22 @@
       <p>Please enter your mail and password</p>
     </div>
     <div class="inputs">
-      <h3>Email</h3>
-      <input
-        id="Email"
-        type="text"
-        placeholder="Login"
-        [ngModel]="user.email"
-        #email
-        name="email"
-      />
-      <h3>Password</h3>
-      <input
-        id="Password"
-        type="password"
-        placeholder="password"
-        [ngModel]="user.password"
-        #password
-        name="password"
-      />
+      <ion-label>Email</ion-label>
+      <ion-item>
+        <ion-input id="Email" type="email" placeholder="email" [(ngModel)]="user.email" name="email"></ion-input>
+      </ion-item>
+      <ion-label>Password</ion-label>
+      <ion-item>
+        <ion-input id="Password" type="password" placeholder="password" [(ngModel)]="user.password" name="password"></ion-input>
+      </ion-item>
     </div>
   </form>
   <div class="buttons">
-    <button id="login" type="submit" (click)="login(email, password)">Logeate</button>
+    <ion-button id="login" type="submit" (click)="login()">Logeate</ion-button>
   </div>
 
   <div class="footer">
     <p>Don't have an account<a href=""> Sign up</a></p>
     <a href="">Forgot Password?</a>
   </div>
-</div>
+</ion-content >

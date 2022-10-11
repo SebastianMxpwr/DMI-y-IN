@@ -3,9 +3,11 @@ const bcrypt = require('bcrypt-nodejs')
 const jwt = require('../helpers/jwt')
 
 //TODO: hacer los get de los empleados
+//TODO: Hacer el get por id del empleado
 
 const registerUser = async(req, res) =>{
-    let {body} = req
+    try {
+        let {body} = req
     
     const duplicateUser = await User.findOne({email: body.email})
 
@@ -22,10 +24,10 @@ const registerUser = async(req, res) =>{
             bcrypt.hash(body.password,null,null, async(req,hash)=>{
                 if(hash){
                     body.password = hash
-                    const reg = await User.create(body)
+                    const userRegistered = await User.create(body)
                     res.status(200).send({
                         msg:'Empleado Creado',
-                        res: reg
+                        res: userRegistered
                     })
                 }else{
                     res.status(400).send({
@@ -39,30 +41,43 @@ const registerUser = async(req, res) =>{
             msg: 'Ya esta registrado este email'
         })
     }
+    } catch (err) {
+        res.status(500).send({
+            msg:'Ocurrio un error interno, intene de nuevo',
+            err: err
+        })
+    }
 }
 
 const loginUser = async(req,res)=>{
-    let {body} = req
+    try {
+        let {body} = req
 
-    const userFound = await User.findOne({email: body.email})
-
- 
-    if(!userFound){
-        res.status(404).send({
-            msg: 'El correo no esta registrado'
-        })
-    }else{
-        bcrypt.compare(body.password, userFound.password, async(err, check)=>{
-            if(!check){
-                res.status(400).send({
-                    msg: 'la contraseña no es correcta'
-                })
-            }
-            res.status(200).send({
-                msg: 'Usuario logedo',
-                user: userFound,
-                jwt: jwt.crearToken(userFound)
+        const userFound = await User.findOne({email: body.email})
+    
+     
+        if(!userFound){
+            res.status(404).send({
+                msg: 'El correo no esta registrado'
             })
+        }else{
+            bcrypt.compare(body.password, userFound.password, async(err, check)=>{
+                if(!check){
+                    res.status(400).send({
+                        msg: 'la contraseña no es correcta'
+                    })
+                }
+                res.status(200).send({
+                    msg: 'Usuario logedo',
+                    user: userFound,
+                    jwt: jwt.crearToken(userFound)
+                })
+            })
+        }   
+    } catch (err) {
+        res.status(500).send({
+            msg: 'Ocurrio un error interno, intene de nuevo',
+            err: err
         })
     }
 
