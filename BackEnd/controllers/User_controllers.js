@@ -5,6 +5,33 @@ const jwt = require('../helpers/jwt')
 //TODO: hacer los get de los empleados
 //TODO: Hacer el get por id del empleado
 
+const getUserById = async(req, res)=>{
+    try {
+        let {id} = req.params
+        if(!id){
+            res.status(404).send({
+                msg: 'No se recibio un id'
+            })
+        }else{
+            const userFound = await User.findById(id)
+            if(!userFound){
+                res.status(404).send({
+                    msg: 'Este usuario ya no esta registrado o no existe'
+                })
+            }else{
+                res.status(200).send({
+                    msg: 'Usuario encontrado',
+                    res: userFound
+                })
+            }
+        }
+    } catch (err) {
+        res.status(500).send({
+            msg: 'Ocurrio un error interno intene de nuevo',
+        })
+    }
+}
+
 const registerUser = async(req, res) =>{
     try {
         let {body} = req
@@ -86,4 +113,5 @@ const loginUser = async(req,res)=>{
 module.exports = {
     registerUser,
     loginUser,
+    getUserById
 }

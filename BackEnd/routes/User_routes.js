@@ -4,5 +4,6 @@ const api = express()
 
 api.post('/login', userController.loginUser)
 api.post('/register', userController.registerUser)
+api.get('/userID/:id', userController.getUserById)
 
 module.exports = api

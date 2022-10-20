@@ -20,8 +20,8 @@ const storeModel = new Schema({
             name: String,
             amount: Number,
             description: String,
-            pathImage: String,
             price: Number,
+            pathImage: String,
         }
     ],
     imagePath:{
