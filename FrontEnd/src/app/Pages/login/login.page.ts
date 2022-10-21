@@ -19,8 +19,10 @@ export class LoginPage implements OnInit {
   }
 
   login(){
-    this.userS.login(this.user).subscribe(user => {
-      console.log(user);
+    this.userS.login(this.user).subscribe((user:any) => {
+      localStorage.setItem('_id', user.user._id)
+      this.router.navigate(['/stores'])
+
       
     },err=>{
       console.log(err);
