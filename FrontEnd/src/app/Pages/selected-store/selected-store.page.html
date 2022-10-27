@@ -1,0 +1,64 @@
+<ion-menu type="reveal" contentId="store-content">
+  <ion-content class="ion-padding">
+    <div class="profile">
+      <div class="img-profile">
+        <img alt="profile-picture" src="https://ionicframework.com/docs/img/demos/avatar.svg">
+      </div>
+      <div class="buttons">
+        <ion-button>
+          <ion-icon name="person-outline"></ion-icon>
+          <span class="ion-text-left">Tu perfl</span>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="refresh-outline"></ion-icon>
+          <span class="ion-text-left">Tiendas recientes</span>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="star-outline"></ion-icon>
+          <span class="ion-text-left">Tus favoritos</span>
+        </ion-button>
+        <ion-button class="unique-button"><ion-icon slot="end" name="log-out-outline"></ion-icon></ion-button>
+      </div>
+    </div>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="store-content">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-title>{{store.name}}</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        <ion-back-button color="danger"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header> 
+  <div class="products">
+    <ion-slides [options]="option">
+      <ion-slide *ngFor="let product of store.products">
+        <ion-card>
+          <img alt="Silhouette of mountains" [src]="'http://localhost:3000/' +  product.pathImage" (click)="goToProduct(product._id)"/>
+          <ion-card-header (click)="goToProduct(store._id)">
+            <ion-card-subtitle>{{product.description}}</ion-card-subtitle>
+            <ion-card-title>{{product.name}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-slides [options]="option">
+      <ion-slide *ngFor="let product of store.products">
+        <ion-card>
+          <img alt="Silhouette of mountains" [src]="'http://localhost:3000/' +  product.pathImage" (click)="goToProduct(product._id)"/>
+          <ion-card-header (click)="goToProduct(store._id)">
+            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            <ion-card-title>{{product.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{product.description}}
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

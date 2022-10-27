@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StoreService } from "../../Services/store.service";
 import { UserService } from "../../Services/user.service";
 
@@ -17,7 +18,7 @@ export class StoresPage implements OnInit {
     typeUser: Number,
     _id: String
   }
-  constructor(public storeS: StoreService, public userS: UserService) { }
+  constructor(public storeS: StoreService, public userS: UserService, public router: Router) { }
 
   ngOnInit() {
     this.getStores()
@@ -35,8 +36,7 @@ export class StoresPage implements OnInit {
   }
 
   goToStore(id){
-    console.log(id);
-    
+    this.router.navigate(['/selected-store',id])
   }
 
   getUserForData(){

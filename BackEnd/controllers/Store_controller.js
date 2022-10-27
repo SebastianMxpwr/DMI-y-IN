@@ -34,7 +34,7 @@ const getStoreById = async (req, res) => {
                 res: 0
             })
         } else {
-            const StoreFounded = Store.findOne({ _id: id })
+            const StoreFounded = await Store.findById(id)
             if (!Store) {
                 res.status(404).send({
                     msg: 'Esta tienda no existe',

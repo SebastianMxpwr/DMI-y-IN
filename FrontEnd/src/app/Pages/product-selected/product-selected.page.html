@@ -1,4 +1,4 @@
-<ion-menu type="reveal" contentId="main-content">
+<ion-menu type="reveal" contentId="product-content">
   <ion-content class="ion-padding">
     <div class="profile">
       <div class="img-profile">
@@ -22,19 +22,6 @@
     </div>
   </ion-content>
 </ion-menu> 
-<ion-content id="main-content">
-  <div class="data">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-      <p>Hola! {{user.name}}</p>
-    </ion-buttons>
-  </div>
-  <div class="stores">
-    <ion-card *ngFor="let store of addedStores">
-      <img alt="Silhouette of mountains" [src]="'http://localhost:3000/' +  store.imagePath" (click)="goToStore(store._id)"/>
-      <ion-card-header (click)="goToStore(store._id)">
-        <ion-card-title>{{store.name}}</ion-card-title>
-      </ion-card-header>
-    </ion-card>
-  </div>
+<ion-content id="product-content">
+  
 </ion-content>

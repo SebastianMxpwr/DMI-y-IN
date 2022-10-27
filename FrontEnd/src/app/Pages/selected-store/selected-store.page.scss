@@ -4,23 +4,22 @@ ion-content{
     --background: #0d1423;
     font-family: 'Work Sans', sans-serif;
 
-    .data{
-        p{
-            font-size: 20px;
+    ion-header{
+        ion-toolbar{
+            --background: #0d1423;
         }
     }
-    .stores{
+    .products{
         background-color: rgb(220, 220, 220);
         font-family: 'Work Sans', sans-serif;
-        display:flex;
-        flex-direction: column;
         height: 100%;
         border-radius: 50px 50px 0px 0px;
-        align-items: center;
+        margin-top: 10px;
         ion-card{
+            margin-top: 50px;
             font-family: 'Work Sans', sans-serif;
-            text-align: center;
-            width: 80%;
+            text-align: left;
+            height: 270px;
             img{
                 height: 120px;
                 width: 100%;
@@ -28,6 +27,11 @@ ion-content{
             }
             ion-card-header{
                 --background: #0d1423;
+                height: 100%;
+                ion-card-title{
+                    font-size: 20px;
+                    font-weight: bold;
+                }
             }
             
         }
