@@ -9,10 +9,8 @@ import { StoreService } from 'src/app/Services/store.service';
 })
 export class SelectedStorePage implements OnInit {
 
-  id: string;
-  product= {
-
-  }
+  idStore: string;
+  idProduct: string;
   store={
     Active: false,
     directionStore: '',
@@ -45,8 +43,8 @@ export class SelectedStorePage implements OnInit {
 
   getStoresById(){
     this.aRouter.params.subscribe(param=>{
-      this.id = param['idStore']
-      this.storeS.getStoreById(this.id).subscribe((res:any)=>{
+      this.idStore = param['idStore']
+      this.storeS.getStoreById(this.idStore).subscribe((res:any)=>{
         this.store = res.res
         console.log(this.store);
       },err =>{
@@ -59,8 +57,17 @@ export class SelectedStorePage implements OnInit {
   }
 
   goToProduct(id){
-    this.router.navigate(['/product-selected',this.id, id])
+    this.aRouter.params.subscribe(param=>{
+      this.idStore = param['idStore']
+      this.idProduct = id
+      console.log(this.idStore, this.idProduct);
+      this.router.navigate(['/product-selected',this.idStore, id])
+    })
     
+  }
+
+  regresar(){
+    this.router.navigate(['/stores'])
   }
 
 

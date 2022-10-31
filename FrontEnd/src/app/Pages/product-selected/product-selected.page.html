@@ -26,20 +26,21 @@
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <ion-title></ion-title>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        <ion-back-button color="danger"></ion-back-button>
+      <ion-buttons >
+        <ion-menu-button slot="start"></ion-menu-button>
+
+        <ion-button slot="end" [href]="'/selected-store/' + idStore"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
   <div class="product">
     <div id="img-product">
-      <img src="https://docs-demo.ionic.io/assets/madison.jpg" alt="The Wisconsin State Capitol building in Madison, WI at night">
+      <img [src]="'http://localhost:3000/' +  product.pathImage" alt="The Wisconsin State Capitol building in Madison, WI at night">
     </div>
     <div id="information">
-      <h1>Title</h1>
-      <h2>Description</h2>
-      <p>Precio</p>
+      <h1><strong>Nombre: {{product.name}}</strong></h1>
+      <h4>Descripcion: {{product.description}}</h4>
+      <p>Precio: $MXN{{product.price}}</p>
     </div>
   </div>
 </ion-content>
