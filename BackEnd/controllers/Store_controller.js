@@ -130,10 +130,47 @@ const registerProducts = async(req, res)=>{
     }
 }
 
+const getProductById = async( req, res)=>{
+
+    const { idStore, idProduct } = req.params
+    let productRes = {}
+
+    const storeFounded = await Store.findById(idStore)
+    if(!storeFounded){
+        res.status(404).send({
+            msg: 'No se encontro a tienda'
+        })
+    }else{
+        storeFounded.products.forEach(product => {
+
+            if(product._id == idProduct){
+                productRes = product
+                console.log(productRes)
+            }else{
+                productRes = null
+            }
+        })
+
+        if(productRes != null){
+            res.status(200).send({
+                msg: 'producto encontrado y macheado',
+                res: productRes
+            })
+        }else{
+            res.status(404).send({
+                msg: 'productono no encontrado'
+            })
+        }
+    }
+
+}
+
+
 
 module.exports = {
     getAllStores,
     getStoreById,
     registerStore,
-    registerProducts
+    registerProducts,
+    getProductById
 }

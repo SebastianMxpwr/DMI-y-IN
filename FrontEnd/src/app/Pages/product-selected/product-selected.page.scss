@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;400;600&display=swap');
+
+ion-content{
+    --background: #0d1423;
+    font-family: 'Work Sans', sans-serif;
+
+    ion-header{
+        ion-toolbar{
+            --background: #0d1423;
+        }
+    }
+
+    .product{
+        background-color: rgb(220, 220, 220);
+        font-family: 'Work Sans', sans-serif;
+        height: 70%;
+        border-radius: 50px 50px 0px 0px;
+        margin-top: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        #img-product{
+            width: 100%;
+            text-align: center;
+            img{
+                transform: translateY(-100px);
+                width: 80%;
+                height: 300px;
+                object-fit: cover;
+                border-radius: 50px;
+
+            }
+        }
+
+        #information{
+            width: 80%;
+            font-family: 'Work Sans', sans-serif;
+            color: black;
+            transform: translateY(-100px)
+        }
+    }
+}

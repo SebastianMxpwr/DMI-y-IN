@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StoreService } from 'src/app/Services/store.service';
 
 @Component({
   selector: 'app-product-selected',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductSelectedPage implements OnInit {
 
-  constructor() { }
+  idStore: string
+  idProduct:string
+
+  product= {
+
+  }
+  constructor(private aRouter: ActivatedRoute, public storeS: StoreService, public router: Router) { }
 
   ngOnInit() {
+    this.getProduct()
+  }
+
+  getProduct(){
+    this.aRouter.params.subscribe(param=>{
+      this.idStore = param['idStore']
+      this.idProduct = param['idProduct']
+      this.storeS.getProductById(this.idStore, this.idProduct).subscribe((res:any)=>{
+        console.log(res);
+        
+      })
+    })
   }
 
 }

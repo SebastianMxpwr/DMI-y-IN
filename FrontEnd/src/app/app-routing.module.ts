@@ -16,11 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./Pages/stores/stores.module').then( m => m.StoresPageModule)
   },
   {
-    path: 'selected-store/:id',
+    path: 'selected-store/:idStore',
     loadChildren: () => import('./Pages/selected-store/selected-store.module').then( m => m.SelectedStorePageModule)
   },
   {
-    path: 'product-selected',
+    path: 'product-selected/:idStore/:idProduct',
     loadChildren: () => import('./Pages/product-selected/product-selected.module').then( m => m.ProductSelectedPageModule)
   },
 ];

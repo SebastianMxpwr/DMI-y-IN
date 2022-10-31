@@ -25,4 +25,8 @@ export class StoreService {
   addProduct(product, id){
     return this.http.post(`${this.url}/addProductStore/${id}`, product)
   }
+
+  getProductById(idStore, idProduct){
+    return this.http.get(`${this.url}/product/${idStore}/${idProduct}`)
+  }
 }

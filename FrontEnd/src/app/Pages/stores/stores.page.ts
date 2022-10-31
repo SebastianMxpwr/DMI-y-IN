@@ -37,6 +37,8 @@ export class StoresPage implements OnInit {
 
   goToStore(id){
     this.router.navigate(['/selected-store',id])
+    console.log(id);
+    
   }
 
   getUserForData(){
