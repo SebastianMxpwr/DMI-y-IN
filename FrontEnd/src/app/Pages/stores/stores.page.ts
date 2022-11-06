@@ -16,6 +16,7 @@ export class StoresPage implements OnInit {
     email: String,
     name: String,
     typeUser: Number,
+    imagePath: String,
     _id: String
   }
   constructor(public storeS: StoreService, public userS: UserService, public router: Router) { }

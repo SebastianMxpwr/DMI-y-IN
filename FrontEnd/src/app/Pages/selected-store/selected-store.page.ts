@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoreService } from 'src/app/Services/store.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-selected-store',
@@ -28,10 +29,21 @@ export class SelectedStorePage implements OnInit {
     }],
     _id: ''
   }
-  constructor(private aRouter: ActivatedRoute, public storeS: StoreService, public router: Router) { }
+
+  user = {
+    Active: true,
+    email: '',
+    name: '',
+    typeUser: 0,
+    imagePath: '',
+    _id: ''
+  }
+
+  constructor(private aRouter: ActivatedRoute, public storeS: StoreService, public router: Router, public userS: UserService) { }
 
   ngOnInit() {
     this.getStoresById()
+    this.getUserForData()
   }
 
   option={
@@ -69,6 +81,19 @@ export class SelectedStorePage implements OnInit {
   regresar(){
     this.router.navigate(['/stores'])
   }
+
+  getUserForData(){
+    const id = localStorage.getItem('_id')
+    this.userS.getUserByid(id).subscribe((res:any)=>{
+      this.user = res.res
+      console.log(this.user);
+            
+    },err=>{
+      console.error(err);
+      
+    })
+  }
+
 
 
 }

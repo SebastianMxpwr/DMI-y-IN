@@ -2,7 +2,7 @@
   <ion-content class="ion-padding">
     <div class="profile">
       <div class="img-profile">
-        <img alt="profile-picture" src="https://ionicframework.com/docs/img/demos/avatar.svg">
+        <img alt="profile-picture" [src]="'http://localhost:3000/' +  user.imagePath">
       </div>
       <div class="buttons">
         <ion-button>

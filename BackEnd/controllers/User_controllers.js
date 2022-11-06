@@ -34,27 +34,36 @@ const getUserById = async(req, res)=>{
 
 const registerUser = async(req, res) =>{
     try {
-        let {body} = req
     
-    const duplicateUser = await User.findOne({email: body.email})
+        let {name, email,password, typeUser} = req.body
+    
+    const duplicateUser = await User.findOne({email: email})
 
     if(!duplicateUser){
-        if(!body.password){
+        if(!password){
             res.status(400).send({
                 msg: 'No se introdujo una contraseña'
             })
-        }else if(body.password.length<8){
+        }else if(password.length<8){
             res.status(400).send({
                 msg: 'La contraseña es muy corta'
             })
         }else{
-            bcrypt.hash(body.password,null,null, async(req,hash)=>{
+            const newUser ={
+                name,
+                email,
+                password,
+                typeUser,
+                imagePath: req.file.path
+            } 
+            bcrypt.hash(password,null,null, async(req,hash)=>{
                 if(hash){
-                    body.password = hash
-                    const userRegistered = await User.create(body)
+                    newUser.password = hash
+                    const userAdded = new User(newUser)
+                    await userAdded.save()
                     res.status(200).send({
                         msg:'Empleado Creado',
-                        res: userRegistered
+                        res: userAdded
                     })
                 }else{
                     res.status(400).send({
@@ -69,12 +78,14 @@ const registerUser = async(req, res) =>{
         })
     }
     } catch (err) {
+        console.log(err)
         res.status(500).send({
             msg:'Ocurrio un error interno, intene de nuevo',
             err: err
         })
     }
 }
+
 
 const loginUser = async(req,res)=>{
     try {

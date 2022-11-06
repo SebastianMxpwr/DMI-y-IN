@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoreService } from 'src/app/Services/store.service';
 import { Location } from "@angular/common";
+import { UserService } from 'src/app/Services/user.service';
 
 
 
@@ -23,7 +24,17 @@ export class ProductSelectedPage implements OnInit {
     price: 0,
     _id: ''
   }
-  constructor(private aRouter: ActivatedRoute, public storeS: StoreService, public router: Router, private location: Location) { }
+
+  user = {
+    Active: true,
+    email: '',
+    name: '',
+    typeUser: 0,
+    imagePath: '',
+    _id: ''
+  }
+
+  constructor(private aRouter: ActivatedRoute, public storeS: StoreService, public router: Router, private location: Location, public userS: UserService) { }
 
   ngOnInit() {
     this.getProduct()
@@ -39,12 +50,17 @@ export class ProductSelectedPage implements OnInit {
     })
   }
 
-  regresar(){
-    this.location.back();
-    
-    // this.router.navigate(['/selected-store', this.idStore])
-    console.log('aplicada');
-    
+  getUserForData(){
+    const id = localStorage.getItem('_id')
+    this.userS.getUserByid(id).subscribe((res:any)=>{
+      this.user = res.res
+      console.log(this.user);
+            
+    },err=>{
+      console.error(err);
+      
+    })
   }
+  
 }
 
