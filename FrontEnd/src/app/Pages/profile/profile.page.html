@@ -1,13 +1,13 @@
-<ion-menu type="reveal" contentId="product-content">
+<ion-menu type="reveal" contentId="user_content">
   <ion-content class="ion-padding">
     <div class="profile">
       <div class="img-profile">
         <img alt="profile-picture" [src]="'http://localhost:3000/' +  user.imagePath">
       </div>
       <div class="buttons">
-        <ion-button>
+        <ion-button routerLink="/stores">
           <ion-icon name="person-outline"></ion-icon>
-          <span class="ion-text-left">Tu perfl</span>
+          <span class="ion-text-left">Tiendas</span>
         </ion-button>
         <ion-button>
           <ion-icon name="refresh-outline"></ion-icon>
@@ -22,25 +22,36 @@
     </div>
   </ion-content>
 </ion-menu> 
-<ion-content id="product-content">
+
+<ion-content id="user_content">
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <ion-title></ion-title>
       <ion-buttons >
         <ion-menu-button slot="start"></ion-menu-button>
-
-        <ion-button slot="end" (click)="regresar()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <div class="product">
-    <div id="img-product">
-      <img [src]="'http://localhost:3000/' +  product.pathImage" alt="The Wisconsin State Capitol building in Madison, WI at night">
+  <div class="user_data">
+    <div id="img-user">
+      <img alt="profile-picture" [src]="'http://localhost:3000/'+ user.imagePath">
     </div>
     <div id="information">
-      <h1><strong>Nombre: {{product.name}}</strong></h1>
-      <h4>Descripcion: {{product.description}}</h4>
-      <p>Precio: $MXN{{product.price}}</p>
+      <div class="data">
+        <ion-label>Nombre</ion-label>
+        <ion-item>
+        <ion-input  disabled>{{user.name}}</ion-input>
+        </ion-item>
+      </div>
+      <div class="data">
+        <ion-label>Email</ion-label>
+        <ion-item>
+        <ion-input  disabled>{{user.email}}</ion-input>
+        </ion-item>
+      </div>
+      <div class="button">
+        <ion-button><ion-icon name="pencil-outline"></ion-icon>Editar</ion-button>
+      </div>
     </div>
   </div>
 </ion-content>

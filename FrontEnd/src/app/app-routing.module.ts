@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'product-selected/:idStore/:idProduct',
     loadChildren: () => import('./Pages/product-selected/product-selected.module').then( m => m.ProductSelectedPageModule)
+  },  {
+    path: 'profile',
+    loadChildren: () => import('./Pages/profile/profile.module').then( m => m.ProfilePageModule)
   },
+
 ];
 
 @NgModule({

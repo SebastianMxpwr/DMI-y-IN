@@ -44,9 +44,9 @@ export class ProductSelectedPage implements OnInit {
     this.aRouter.params.subscribe(param=>{
       this.idStore = param['idStore']
       this.idProduct = param['idProduct']
-      this.storeS.getProductById(this.idStore, this.idProduct).subscribe((res:any)=>{
-        this.product = res.res        
-      })
+    })
+    this.storeS.getProductById(this.idStore, this.idProduct).subscribe((res:any)=>{
+      this.product = res.res        
     })
   }
 
@@ -61,6 +61,11 @@ export class ProductSelectedPage implements OnInit {
       
     })
   }
-  
+
+  regresar(){   
+    this.router.navigateByUrl(`/selected-store/${this.idStore}`)
+    console.log(this.idProduct);
+    
+  }
 }
 

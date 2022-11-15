@@ -73,8 +73,9 @@ export class SelectedStorePage implements OnInit {
       this.idStore = param['idStore']
       this.idProduct = id
       console.log(this.idStore, this.idProduct);
-      this.router.navigate(['/product-selected',this.idStore, id])
     })
+
+    this.router.navigateByUrl(`/product-selected/${this.idStore}/${this.idProduct}`)
     
   }
 
