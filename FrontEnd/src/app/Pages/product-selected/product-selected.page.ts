@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StoreService } from 'src/app/Services/store.service';
 import { Location } from "@angular/common";
 import { UserService } from 'src/app/Services/user.service';
+import { MenuController } from '@ionic/angular';
 
 
 
@@ -34,10 +35,11 @@ export class ProductSelectedPage implements OnInit {
     _id: ''
   }
 
-  constructor(private aRouter: ActivatedRoute, public storeS: StoreService, public router: Router, private location: Location, public userS: UserService) { }
+  constructor(private aRouter: ActivatedRoute, public storeS: StoreService, public router: Router, private location: Location, public userS: UserService, private menu: MenuController) { }
 
   ngOnInit() {
     this.getProduct()
+    this.getUserForData()
   }
 
   getProduct(){
@@ -66,6 +68,10 @@ export class ProductSelectedPage implements OnInit {
     this.router.navigateByUrl(`/selected-store/${this.idStore}`)
     console.log(this.idProduct);
     
+  }
+
+  openMenu(){
+    this.menu.open('first');
   }
 }
 

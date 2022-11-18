@@ -4,7 +4,8 @@ const api = express()
 const upload = require('../helpers/multer')
 
 api.post('/login', userController.loginUser)
-api.post('/register', upload.single('imagePath'),userController.registerUser)
+api.post('/register', upload.single('imagePath'), userController.registerUser)
 api.get('/userID/:id', userController.getUserById)
+api.put('/update/:id', upload.single('imagePath'), userController.updateUser)
 
 module.exports = api

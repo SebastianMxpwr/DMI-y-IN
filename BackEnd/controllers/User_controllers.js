@@ -1,9 +1,7 @@
 const User = require('../models/User_model')
 const bcrypt = require('bcrypt-nodejs')
+const fs = require('fs');
 const jwt = require('../helpers/jwt')
-
-//TODO: hacer los get de los empleados
-//TODO: Hacer el get por id del empleado
 
 const getUserById = async(req, res)=>{
     try {
@@ -86,7 +84,6 @@ const registerUser = async(req, res) =>{
     }
 }
 
-
 const loginUser = async(req,res)=>{
     try {
         let {body} = req
@@ -121,8 +118,54 @@ const loginUser = async(req,res)=>{
 
 }
 
+const updateUser = async(req, res)=>{
+    try {
+        const id = req.params.id
+    let {name, email} = req.body
+    const newImage = req.file.path
+
+    const userFounded = await User.findById(id)
+    if(!userFounded){
+        res.status(404).send({
+            msg: 'No se enuentra el usuario'
+        })
+    }else{
+        fs.unlink(userFounded.imagePath, (err)=>{
+            if(err){
+                console.log(err);
+            }
+            console.log('imagen eliminada');
+        })
+        const userUpdate = {
+            name,
+            email,
+            imagePath: req.file.path
+        }
+
+        const userFoundedAndUpdated = await User.findByIdAndUpdate(id,userUpdate,{new: true})
+        if(!userFoundedAndUpdated){
+            res.status(400).send({
+                msg: 'No se pudo actualizar el usuario intente de nuevo'
+            })
+        }else{
+            res.status(200).send({
+                msg: 'Exito al actualizar el empleado',
+                cont: userFoundedAndUpdated
+            })
+        }
+    }
+    } catch (error) {
+        res.status(500).send({
+            msg: 'Ocurrio un error interno, intene de nuevo',
+            err: err
+        })
+    }
+
+    
+}
 module.exports = {
     registerUser,
     loginUser,
-    getUserById
+    getUserById,
+    updateUser
 }
