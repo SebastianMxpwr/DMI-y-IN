@@ -120,9 +120,16 @@ const loginUser = async(req,res)=>{
 
 const updateUser = async(req, res)=>{
     try {
-        const id = req.params.id
+       
+    } catch (error) {
+        res.status(500).send({
+            msg: 'Ocurrio un error interno, intene de nuevo',
+            err: error
+        })
+    }
+
+    const id = req.params.id
     let {name, email} = req.body
-    const newImage = req.file.path
 
     const userFounded = await User.findById(id)
     if(!userFounded){
@@ -130,35 +137,28 @@ const updateUser = async(req, res)=>{
             msg: 'No se enuentra el usuario'
         })
     }else{
-        fs.unlink(userFounded.imagePath, (err)=>{
-            if(err){
-                console.log(err);
-            }
-            console.log('imagen eliminada');
-        })
         const userUpdate = {
             name,
             email,
             imagePath: req.file.path
         }
-
         const userFoundedAndUpdated = await User.findByIdAndUpdate(id,userUpdate,{new: true})
         if(!userFoundedAndUpdated){
             res.status(400).send({
                 msg: 'No se pudo actualizar el usuario intente de nuevo'
             })
         }else{
+            fs.unlink(userFounded.imagePath, (err)=>{
+                if(err){
+                    console.log(err);
+                }
+                console.log('imagen eliminada');
+            })
             res.status(200).send({
                 msg: 'Exito al actualizar el empleado',
                 cont: userFoundedAndUpdated
             })
         }
-    }
-    } catch (error) {
-        res.status(500).send({
-            msg: 'Ocurrio un error interno, intene de nuevo',
-            err: err
-        })
     }
 
     

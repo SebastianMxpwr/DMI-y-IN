@@ -1,4 +1,4 @@
-<!-- <ion-menu type="reveal" contentId="stores-content">
+<ion-menu type="reveal" contentId="stores-content">
   <ion-content class="ion-padding">
     <div class="profile">
       <div class="img-profile">
@@ -9,6 +9,10 @@
           <ion-icon name="person-outline"></ion-icon>
           <span class="ion-text-left">Tu perfl</span>
         </ion-button>
+        <ion-button routerLink="/stores">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+          <span class="ion-text-left">Tiendas</span>
+        </ion-button>
         <ion-button>
           <ion-icon name="refresh-outline"></ion-icon>
           <span class="ion-text-left">Tiendas recientes</span>
@@ -17,11 +21,11 @@
           <ion-icon name="star-outline"></ion-icon>
           <span class="ion-text-left">Tus favoritos</span>
         </ion-button>
-        <ion-button class="unique-button"><ion-icon slot="end" name="log-out-outline"></ion-icon></ion-button>
+        <ion-button class="unique-button" (click)="logout()"><ion-icon slot="end" name="log-out-outline"></ion-icon></ion-button>
       </div>
     </div>
   </ion-content>
-</ion-menu>  -->
+</ion-menu> 
 <ion-content id="stores-content">
   <div class="data">
     <ion-buttons slot="start">

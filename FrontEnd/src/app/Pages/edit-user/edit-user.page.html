@@ -1,0 +1,33 @@
+<ion-content id="user_content">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-title></ion-title>
+      <ion-buttons >
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <div class="user_data">
+    <div id="img-user">
+      <img alt="profile-picture" [src]="photoSelected || 'https://ionicframework.com/docs/img/demos/avatar.svg'" alt="No image"
+      (click)="photoInput.click()">
+      <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput>
+    </div>
+    <div id="information">
+      <div class="data">
+        <ion-label>Nombre</ion-label>
+        <ion-item>
+        <ion-input [(ngModel)]="user.name"></ion-input>
+        </ion-item>
+      </div>
+      <div class="data">
+        <ion-label>Email</ion-label>
+        <ion-item>
+        <ion-input [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+      </div>
+      <div class="button">
+        <ion-button (click)="registerUser()" href="/stores"><ion-icon name="pencil-outline"></ion-icon>Completar</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

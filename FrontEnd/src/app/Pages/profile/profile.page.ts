@@ -35,4 +35,8 @@ export class ProfilePage implements OnInit {
     })
   }
 
+  goToEdit(){
+    this.router.navigate(['/edit-user'])
+  }
+
 }

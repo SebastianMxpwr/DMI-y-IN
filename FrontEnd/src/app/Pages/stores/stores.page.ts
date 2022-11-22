@@ -54,4 +54,8 @@ export class StoresPage implements OnInit {
     })
   }
 
+  logout(){
+    localStorage.removeItem('id')
+    this.router.navigate(['/login']);
+  }
 }
