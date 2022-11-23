@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;300;400;600&display=swap');
+
+ion-content{
+    --background: #212121;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img{
+    width: 100%;
+    height: 30%;
+    text-align: center;
+}
+
+.img>svg{
+    height: 100%;
+    width: 50%;
+}
+
+.intro{
+    width: 100%;
+    height: 40%;
+    padding: 0px 50px 0px 50px;
+    font-family: 'Work Sans', sans-serif;
+
+}
+
+.intro>h1{
+    color: rgb(219, 219, 219);
+}
+.intro>p{
+    color: rgb(166, 166, 166);
+}
+
+.inputs{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 50px 0px 50px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.inputs > ion-item{
+    font-family: 'Work Sans', sans-serif;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 15px;
+    padding: 15px;
+    --background: #434343;
+    --border-radius: 15px;
+    --color: rgb(166, 166, 166);
+    transition: 0.8s;
+    border: hidden;
+}
+
+.inputs > ion-label{
+    color: rgb(219, 219, 219);
+
+}
+
+
+.buttons{
+    height: 10%;
+    width: 100%;
+    text-align: center;
+}
+
+.buttons  > ion-button{
+    width: 50%;
+    height: 50px;
+    --border-radius: 30px;
+    --background: #255FF5;
+    --color: rgb(219, 219, 219);
+    border: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.1s;
+}
+
+.footer{
+    background: #212121;
+    border-radius: 0px 0px 25px 25px;
+    text-align: center;
+    padding: 0px 0px 10px 0px;
+}
+
+.footer > p{
+    color: rgb(219, 219, 219);
+}
+
+.footer  a{
+    color: #5785f9;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.buttons  > button:hover{
+    background: #5785f9;
+    font-size: 20px;
+}
+
+.buttons  > button:active{
+    background: #2151ca;
+    font-size: 10px;
+}
+
+.inputs > input:focus{
+    background: #484848;
+    border: #484848;
+    color: rgb(219, 219, 219);
+
+}
+
+.footer  a:hover{
+    color: #89a6ef;
+}

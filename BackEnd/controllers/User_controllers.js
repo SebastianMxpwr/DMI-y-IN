@@ -52,7 +52,6 @@ const registerUser = async(req, res) =>{
                 email,
                 password,
                 typeUser,
-                imagePath: req.file.path
             } 
             bcrypt.hash(password,null,null, async(req,hash)=>{
                 if(hash){
